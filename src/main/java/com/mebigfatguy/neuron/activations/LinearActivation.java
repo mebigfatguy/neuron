@@ -14,34 +14,16 @@
  * See the License for the specific language governing permissions and limitations
  * under the License.
  */
-package com.mebigfatguy.neuron.internal.branes;
-
-import java.util.ArrayList;
-import java.util.List;
+package com.mebigfatguy.neuron.activations;
 
 import com.mebigfatguy.neuron.Activation;
-import com.mebigfatguy.neuron.internal.Neuron;
-import com.mebigfatguy.neuron.internal.NeuronBrane;
 import com.mebigfatguy.neuron.internal.ToString;
 
-public class HiddenBrane implements NeuronBrane {
-    private List<Neuron> neurons;
-    private Activation activation;
+public class LinearActivation implements Activation {
 
-    public HiddenBrane(int numberOfInputs) {
-
-        neurons = new ArrayList<>(numberOfInputs);
-        for (int n = 0; n < numberOfInputs; n++) {
-            neurons.add(new Neuron(numberOfInputs));
-        }
-    }
-
-    public Activation getActivation() {
-        return activation;
-    }
-
-    public void setActivation(Activation activationFunction) {
-        activation = activationFunction;
+    @Override
+    public double adjust(double input) {
+        return input;
     }
 
     @Override

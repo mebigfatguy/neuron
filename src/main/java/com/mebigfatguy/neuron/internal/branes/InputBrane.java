@@ -22,6 +22,7 @@ import java.util.List;
 import com.mebigfatguy.neuron.Activation;
 import com.mebigfatguy.neuron.internal.Neuron;
 import com.mebigfatguy.neuron.internal.NeuronBrane;
+import com.mebigfatguy.neuron.internal.ToString;
 
 public class InputBrane implements NeuronBrane {
     private List<Neuron> neurons;
@@ -40,5 +41,10 @@ public class InputBrane implements NeuronBrane {
 
     public void setActivation(Activation activationFunction) {
         activation = activationFunction;
+    }
+
+    @Override
+    public String toString() {
+        return ToString.build(this);
     }
 }

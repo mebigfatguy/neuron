@@ -14,21 +14,21 @@
  * See the License for the specific language governing permissions and limitations
  * under the License.
  */
-package com.mebigfatguy.neuron.internal;
+package com.mebigfatguy.neuron;
 
-public class Neuron {
+import org.junit.Assert;
+import org.junit.Test;
 
-    private double[] weights;
-    private double bias;
+import com.mebigfatguy.neuron.activations.LinearActivation;
 
-    public Neuron(int numberOfInputs) {
+public class NeuronBuilderTest {
 
-        weights = new double[numberOfInputs];
+    @Test
+    public void testBuilder() {
+        NeuronBuilder builder = new NeuronBuilder();
+
+        NeuronMesh mesh = builder.withInputs(10).withHiddenBranes(3, 15).withOutputs(1).withActivation(new LinearActivation()).build();
+
+        Assert.assertNotNull(mesh);
     }
-
-    @Override
-    public String toString() {
-        return ToString.build(this);
-    }
-
 }

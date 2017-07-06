@@ -17,6 +17,7 @@
 package com.mebigfatguy.neuron;
 
 import com.mebigfatguy.neuron.internal.NeuralNet;
+import com.mebigfatguy.neuron.internal.ToString;
 import com.mebigfatguy.neuron.internal.branes.HiddenBrane;
 import com.mebigfatguy.neuron.internal.branes.InputBrane;
 import com.mebigfatguy.neuron.internal.branes.OutputBrane;
@@ -25,7 +26,7 @@ public class NeuronBuilder {
 
     private NeuralNet nn;
 
-    private NeuronBuilder() {
+    public NeuronBuilder() {
         nn = new NeuralNet();
     }
 
@@ -61,4 +62,8 @@ public class NeuronBuilder {
         return nn;
     }
 
+    @Override
+    public String toString() {
+        return ToString.build(this);
+    }
 }

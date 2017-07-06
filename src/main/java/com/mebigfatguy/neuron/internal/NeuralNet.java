@@ -64,4 +64,9 @@ public class NeuralNet implements NeuronMesh {
 
     public void validate() {
     }
+
+    @Override
+    public String toString() {
+        return ToString.build(this);
+    }
 }
