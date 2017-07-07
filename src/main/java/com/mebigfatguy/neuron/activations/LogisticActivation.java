@@ -21,8 +21,20 @@ import com.mebigfatguy.neuron.internal.ToString;
 
 public class LogisticActivation implements Activation {
 
+    double lowValue;
+    double range;
+
+    public LogisticActivation() {
+        lowValue = logistic(0.0);
+        range = logistic(1.0) - lowValue;
+    }
+
     @Override
     public double adjust(double input) {
+        return (logistic(input) - lowValue) / range;
+    }
+
+    private double logistic(double input) {
         return 1.0 / (1 + Math.pow(Math.E, -input));
     }
 
