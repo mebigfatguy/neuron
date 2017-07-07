@@ -83,8 +83,7 @@ public class NeuronMesh implements NeuralNet {
 
     @Override
     public int getNumOutputs() {
-        // TODO Auto-generated method stub
-        return 0;
+        return outputBrane.getNeurons().size();
     }
 
     @Override

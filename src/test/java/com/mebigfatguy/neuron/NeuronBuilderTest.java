@@ -27,8 +27,10 @@ public class NeuronBuilderTest {
     public void testBuilder() {
         NeuronBuilder builder = new NeuronBuilder();
 
-        NeuralNet mesh = builder.withInputs(10).withHiddenBranes(3, 15).withOutputs(1).withActivation(new LinearActivation()).build();
+        NeuralNet nn = builder.withInputs(10).withHiddenBranes(3, 15).withOutputs(1).withActivation(new LinearActivation()).build();
 
-        Assert.assertNotNull(mesh);
+        Assert.assertNotNull(nn);
+        Assert.assertEquals(10, nn.getNumInputs());
+        Assert.assertEquals(1, nn.getNumOutputs());
     }
 }
