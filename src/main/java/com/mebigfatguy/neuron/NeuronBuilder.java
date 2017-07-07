@@ -16,7 +16,7 @@
  */
 package com.mebigfatguy.neuron;
 
-import com.mebigfatguy.neuron.internal.NeuralNet;
+import com.mebigfatguy.neuron.internal.NeuronMesh;
 import com.mebigfatguy.neuron.internal.ToString;
 import com.mebigfatguy.neuron.internal.branes.HiddenBrane;
 import com.mebigfatguy.neuron.internal.branes.InputBrane;
@@ -24,10 +24,10 @@ import com.mebigfatguy.neuron.internal.branes.OutputBrane;
 
 public class NeuronBuilder {
 
-    private NeuralNet nn;
+    private NeuronMesh nn;
 
     public NeuronBuilder() {
-        nn = new NeuralNet();
+        nn = new NeuronMesh();
     }
 
     public NeuronBuilder withInputs(int inputs) {
@@ -57,7 +57,7 @@ public class NeuronBuilder {
         return this;
     }
 
-    public NeuralNet build() {
+    public NeuronMesh build() {
         nn.validate();
         return nn;
     }
