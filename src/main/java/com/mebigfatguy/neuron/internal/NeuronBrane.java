@@ -17,9 +17,25 @@
 package com.mebigfatguy.neuron.internal;
 
 import java.security.SecureRandom;
+import java.util.List;
+
+import com.mebigfatguy.neuron.Activation;
+import com.mebigfatguy.neuron.activations.LinearActivation;
 
 public interface NeuronBrane {
 
-    void init(SecureRandom r);
+    default void init(SecureRandom r) {
+        for (Neuron n : getNeurons()) {
+            n.init(r);
+        }
+        if (getActivation() == null) {
+            setActivation(new LinearActivation());
+        }
+    }
 
+    List<Neuron> getNeurons();
+
+    Activation getActivation();
+
+    void setActivation(Activation activation);
 }

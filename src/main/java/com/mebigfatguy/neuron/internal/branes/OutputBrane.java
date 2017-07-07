@@ -16,12 +16,11 @@
  */
 package com.mebigfatguy.neuron.internal.branes;
 
-import java.security.SecureRandom;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import com.mebigfatguy.neuron.Activation;
-import com.mebigfatguy.neuron.activations.LinearActivation;
 import com.mebigfatguy.neuron.internal.Neuron;
 import com.mebigfatguy.neuron.internal.NeuronBrane;
 import com.mebigfatguy.neuron.internal.ToString;
@@ -35,22 +34,20 @@ public class OutputBrane implements NeuronBrane {
         for (int n = 0; n < numberOfOutputs; n++) {
             neurons.add(new Neuron(numberOfOutputs));
         }
+        neurons = Collections.unmodifiableList(neurons);
     }
 
     @Override
-    public void init(SecureRandom r) {
-        for (Neuron n : neurons) {
-            n.init(r);
-        }
-        if (activation == null) {
-            activation = new LinearActivation();
-        }
+    public List<Neuron> getNeurons() {
+        return neurons;
     }
 
-    public Object getActivation() {
+    @Override
+    public Activation getActivation() {
         return activation;
     }
 
+    @Override
     public void setActivation(Activation activationFunction) {
         activation = activationFunction;
     }

@@ -18,4 +18,7 @@ package com.mebigfatguy.neuron;
 
 public interface NeuralNet {
 
+    int getNumInputs();
+
+    int getNumOutputs();
 }
