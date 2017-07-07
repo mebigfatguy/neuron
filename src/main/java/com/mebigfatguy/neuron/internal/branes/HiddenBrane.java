@@ -16,10 +16,12 @@
  */
 package com.mebigfatguy.neuron.internal.branes;
 
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.mebigfatguy.neuron.Activation;
+import com.mebigfatguy.neuron.activations.LinearActivation;
 import com.mebigfatguy.neuron.internal.Neuron;
 import com.mebigfatguy.neuron.internal.NeuronBrane;
 import com.mebigfatguy.neuron.internal.ToString;
@@ -33,6 +35,16 @@ public class HiddenBrane implements NeuronBrane {
         neurons = new ArrayList<>(numberOfInputs);
         for (int n = 0; n < numberOfInputs; n++) {
             neurons.add(new Neuron(numberOfInputs));
+        }
+    }
+
+    @Override
+    public void init(SecureRandom r) {
+        for (Neuron n : neurons) {
+            n.init(r);
+        }
+        if (activation == null) {
+            activation = new LinearActivation();
         }
     }
 

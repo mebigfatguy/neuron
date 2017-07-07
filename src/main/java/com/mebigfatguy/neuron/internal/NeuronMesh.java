@@ -16,6 +16,7 @@
  */
 package com.mebigfatguy.neuron.internal;
 
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -62,7 +63,13 @@ public class NeuronMesh implements NeuralNet {
         }
     }
 
-    public void validate() {
+    public void init() {
+        SecureRandom r = new SecureRandom();
+        inputBrane.init(r);
+        for (NeuronBrane brane : branes) {
+            brane.init(r);
+        }
+        outputBrane.init(r);
     }
 
     @Override

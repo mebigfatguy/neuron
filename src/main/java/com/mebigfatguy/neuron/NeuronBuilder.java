@@ -58,7 +58,7 @@ public class NeuronBuilder {
     }
 
     public NeuronMesh build() {
-        nn.validate();
+        nn.init();
         return nn;
     }
 

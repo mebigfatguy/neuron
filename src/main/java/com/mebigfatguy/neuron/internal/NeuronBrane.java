@@ -16,5 +16,10 @@
  */
 package com.mebigfatguy.neuron.internal;
 
+import java.security.SecureRandom;
+
 public interface NeuronBrane {
+
+    void init(SecureRandom r);
+
 }

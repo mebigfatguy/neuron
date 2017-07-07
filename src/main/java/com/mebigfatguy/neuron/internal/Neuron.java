@@ -16,6 +16,8 @@
  */
 package com.mebigfatguy.neuron.internal;
 
+import java.security.SecureRandom;
+
 public class Neuron {
 
     private double[] weights;
@@ -24,6 +26,14 @@ public class Neuron {
     public Neuron(int numberOfInputs) {
 
         weights = new double[numberOfInputs];
+    }
+
+    public void init(SecureRandom r) {
+        for (int i = 0; i < weights.length; i++) {
+            weights[i] = r.nextDouble();
+        }
+
+        bias = r.nextDouble();
     }
 
     @Override
