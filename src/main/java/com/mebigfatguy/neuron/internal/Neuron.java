@@ -36,6 +36,10 @@ public class Neuron {
         bias = r.nextDouble();
     }
 
+    public double process(double[] input) {
+        return 0;
+    }
+
     @Override
     public String toString() {
         return ToString.build(this);

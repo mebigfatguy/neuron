@@ -38,4 +38,6 @@ public interface NeuronBrane {
     Activation getActivation();
 
     void setActivation(Activation activation);
+
+    double[] process(double[] input);
 }

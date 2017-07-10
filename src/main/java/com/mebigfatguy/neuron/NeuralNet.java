@@ -21,4 +21,6 @@ public interface NeuralNet {
     int getNumInputs();
 
     int getNumOutputs();
+
+    double[] process(double[] inputs);
 }

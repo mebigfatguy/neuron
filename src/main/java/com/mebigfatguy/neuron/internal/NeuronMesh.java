@@ -44,6 +44,15 @@ public class NeuronMesh implements NeuralNet {
         outputBrane = brane;
     }
 
+    @Override
+    public double[] process(double[] inputs) {
+        double[] output = inputBrane.process(inputs);
+        for (NeuronBrane brane : branes) {
+            output = brane.process(output);
+        }
+        return outputBrane.process(output);
+    }
+
     public void addHiddenBrane(HiddenBrane brane) {
         branes.add(brane);
     }
