@@ -33,11 +33,21 @@ public interface NeuronBrane {
         }
     }
 
+    default double[] process(double[] input) {
+        List<Neuron> neurons = getNeurons();
+        double[] output = new double[neurons.size()];
+
+        int i = 0;
+        for (Neuron neuron : neurons) {
+            output[i++] = neuron.process(input);
+        }
+
+        return output;
+    }
+
     List<Neuron> getNeurons();
 
     Activation getActivation();
 
     void setActivation(Activation activation);
-
-    double[] process(double[] input);
 }

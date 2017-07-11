@@ -54,18 +54,6 @@ public class HiddenBrane implements NeuronBrane {
     }
 
     @Override
-    public double[] process(double[] input) {
-        double[] output = new double[neurons.size()];
-
-        int i = 0;
-        for (Neuron neuron : neurons) {
-            output[i++] = neuron.process(input);
-        }
-
-        return output;
-    }
-
-    @Override
     public String toString() {
         return ToString.build(this);
     }
