@@ -24,14 +24,6 @@ import java.util.Set;
 
 public class ToString {
 
-    /**
-     * holds objects that have already been converted to string to avoid infinite loops in the toString generation
-     */
-    private static class VisitedInfo {
-        Set<Integer> visited = new HashSet<>();
-        int count = 0;
-    }
-
     private static final ThreadLocal<VisitedInfo> visited = new ThreadLocal<VisitedInfo>() {
 
         @Override
@@ -40,6 +32,14 @@ public class ToString {
         }
     };
 
+    /**
+     * holds objects that have already been converted to string to avoid infinite loops in the toString generation
+     */
+    private static class VisitedInfo {
+        Set<Integer> visitedIHC = new HashSet<>();
+        int count = 0;
+    }
+
     private ToString() {
     }
 
@@ -47,10 +47,10 @@ public class ToString {
         VisitedInfo vi = visited.get();
         try {
             vi.count++;
-            return generate(o, (ignoredFields == null) ? null : Arrays.<String> asList(ignoredFields), vi.visited);
+            return generate(o, (ignoredFields == null) ? null : Arrays.<String> asList(ignoredFields), vi.visitedIHC);
         } finally {
             if (--vi.count == 0) {
-                vi.visited.clear();
+                vi.visitedIHC.clear();
             }
         }
     }
